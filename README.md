@@ -1,0 +1,2 @@
+# consul
+consul hello world
