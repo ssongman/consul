@@ -1,0 +1,17 @@
+spring:
+  config:
+    import: "consul:"
+  cloud:
+    consul:
+      config:
+        enabled: true
+        name: ssongman
+        # fail-fast: true
+        # import-check.enabled: false
+      host: localhost
+      port: 8500
+  application:
+    name: ssongman
+server:
+  port: 8181
+
