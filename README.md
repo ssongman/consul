@@ -30,19 +30,20 @@ Consul 은 key value 형식의 저장소
 
 
 
-## 2) key/value입력
+## 2) key/value 입력 및 학인
 
 
-
-
-
-## 3) key/value 확인
-
-
-
-**Get value**
 
 ```sh
+
+# key/value 입력
+
+# key : 
+/nginx/loadbalancing.json
+
+# value :
+hello world
+
 
 $ curl http://localhost:8500/v1/kv/nginx/loadbalancing.json?raw
 hello world
@@ -51,9 +52,7 @@ hello world
 
 
 
-
-
-**List keys**
+## 3) List keys
 
 ```sh
 
@@ -69,6 +68,14 @@ $ curl http://localhost:8500/v1/kv?raw&keys
 hello world
 
 
+```
+
+
+
+## 5) Clean Up
+
+```sh
+$ docker rm -f consul
 ```
 
 
