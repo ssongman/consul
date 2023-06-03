@@ -236,17 +236,6 @@ tlsstores.traefik.containo.us              2023-05-20T03:28:36Z
 traefikservices.traefik.containo.us        2023-05-20T03:28:36Z
 
 
-
-# ingress 생성
-$ ku create -f ./kubernetes/userlist/16.userlist-ingress-cloud.yaml
-
-
-
-
-
-
-
-
 ```
 
 
@@ -329,8 +318,15 @@ consul-ingress   <none>   consul.cloud.35.209.207.26.nip.io   10.128.0.35,10.128
 
 
 ```sh
+
+# ingress delete
 $ cd ~/yjsong/consul
 $ kubectl -n consul delete -f ./15.consul-ingress-cloud.yaml
+
+
+# helm delete
+$ helm -n consul list    
+$ helm -n consul delete consul
 
 ```
 
@@ -340,7 +336,7 @@ $ kubectl -n consul delete -f ./15.consul-ingress-cloud.yaml
 
 
 
-# 4. Spring boot - configuration
+# 4. Configuration with Consul
 
 
 
@@ -597,36 +593,21 @@ spring:
 
 # 5. Service Discovery with Consul
 
-서비스 검색은 마이크로서비스 기반 아키텍처의 핵심 원칙 중 하나입니다.
+서비스 검색은 마이크로서비스 기반 아키텍처의 핵심 원칙 중 하나이다.
 
- 각 클라이언트 또는 일부 형태의 규칙을 수동으로 구성하는 것은 수행하기가 매우 어려울 수 있으며 매우 취약할 수 있습니다.
+각 클라이언트 또는 일부 형태의 규칙을 수동으로 구성하는 것은 수행하기가 매우 어려울 수 있으며 매우 취약할 수 있다.
 
-Consul은 HTTP API 및 DNS를 통해 Service Discovery 서비스를 제공합니다. Spring Cloud Consul은 서비스 등록 및 검색을 위해 HTTP API를 활용합니다. 이는 비 Spring Cloud 애플리케이션이 DNS 인터페이스를 활용하는 것을 막지 않습니다. Consul Agents 서버는 가십 프로토콜을 통해 통신하고 Raft 합의 프로토콜을 사용하는 클러스터에서 실행됩니다.
+Consul은 HTTP API 및 DNS를 통해 Service Discovery 서비스를 제공한다. 
 
-
-
-
+Spring Cloud Consul은 서비스 등록 및 검색을 위해 HTTP API를 활용한다. 이는 비 Spring Cloud 애플리케이션이 DNS 인터페이스를 활용하는 것을 막지 않는다. Consul Agents 서버는 가십 프로토콜을 통해 통신하고 Raft 합의 프로토콜을 사용하는 클러스터에서 실행된다.
 
 
 
 
 
-아래 3개를 포함하여 프로젝트 를 생성하자.
-
-```
-name : spring-boot-consul
-
-dependency: 
-			spring-web
-			...
-			spring-boot-devtools
-			...
-			spring-cloud-starter-consul-discovery
-			...
-
-```
 
 
+# 6. Service Mesh with Consul
 
 
 
